@@ -3,6 +3,7 @@
 		<title>Todos</title>
 	</head>
 	<body>
-		Welcome ${todos}
+		Welcome ${name}
+		Your todos are ${todos}
 	</body>
 </html>
