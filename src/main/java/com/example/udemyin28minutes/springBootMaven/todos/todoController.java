@@ -57,4 +57,12 @@ public class todoController {
         todoService.deleteByID(id);
         return "redirect:list-todos";
     }
+
+    @RequestMapping(value = "update-todos", method = RequestMethod.GET)
+    public String updateTodos(@RequestParam int id,ModelMap model)
+    {
+        Todo todo = todoService.findByID(id);
+        model.addAttribute("todo",todo);
+        return "AddTodo";
+    }
 }
