@@ -1,40 +1,34 @@
 package com.example.udemyin28minutes.springBootMaven.todos;
 
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class Todo {
     private int id;
     private String ownerName;
+    @Size(min = 10,message = "Enter atleast 10 characters")
     private String description;
     private LocalDate endDate;
-    private boolean isDone;
+    private boolean done;
 
-    public Todo(int id, String ownerName, String description, LocalDate endDate, boolean isDone) {
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", ownerName='" + ownerName + '\'' +
+                ", description='" + description + '\'' +
+                ", endDate=" + endDate +
+                ", done=" + done +
+                '}';
+    }
+
+    public Todo(int id, String ownerName, String description, LocalDate endDate, boolean done) {
         this.id = id;
         this.ownerName = ownerName;
         this.description = description;
         this.endDate = endDate;
-        this.isDone = isDone;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public boolean isDone() {
-        return isDone;
+        this.done = done;
     }
 
     public void setId(int id) {
@@ -54,17 +48,26 @@ public class Todo {
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.done = done;
     }
 
-    @Override
-    public String toString() {
-        return "Todo{" +
-                "id=" + id +
-                ", ownerName='" + ownerName + '\'' +
-                ", description='" + description + '\'' +
-                ", endDate=" + endDate +
-                ", isDone=" + isDone +
-                '}';
+    public int getId() {
+        return id;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public boolean isDone() {
+        return done;
     }
 }
