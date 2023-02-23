@@ -8,11 +8,10 @@
 	<div class="container">
 		Welcome ${name}
 		<h1>Your todos </h1>
-
 		<table class="table">
             <thead>
                <tr>
-               						<th>id</th>
+
                						<th>Description</th>
                						<th>Target Date</th>
                						<th>Is Done?</th>
@@ -24,7 +23,6 @@
             <tbody>
            <c:forEach items="${todos}" var="todo">
                 <tr>
-                    <td>${todo.id}</td>
                     <td>${todo.description}</td>
                     <td>${todo.endDate}</td>
                     <td>${todo.done}</td>

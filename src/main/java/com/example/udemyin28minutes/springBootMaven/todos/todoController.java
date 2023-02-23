@@ -46,7 +46,7 @@ public class todoController {
             List<Todo> todos = todoService.findByUserName("sneha");
 //        model.addAttribute("todos",todos);
             String userName = (String) model.get("name");
-            todoService.addNewTodo(userName, todo.getDescription(), LocalDate.now().plusDays(6), false);
+            todoService.addNewTodo(userName, todo.getDescription(), todo.getEndDate(), false);
             return "redirect:list-todos";
         }
     }
@@ -59,10 +59,28 @@ public class todoController {
     }
 
     @RequestMapping(value = "update-todos", method = RequestMethod.GET)
-    public String updateTodos(@RequestParam int id,ModelMap model)
+    public String showUpdateTodos(@RequestParam int id,ModelMap model)
     {
         Todo todo = todoService.findByID(id);
         model.addAttribute("todo",todo);
         return "AddTodo";
+    }
+
+    @RequestMapping(value = "update-todos", method = RequestMethod.POST)
+    public String updateTodos(ModelMap model, @Valid Todo todo, BindingResult result) {
+        if (result.hasErrors()) {
+            return "AddTodo";
+        }
+        else {
+            List<Todo> todos = todoService.findByUserName("sneha");
+//        model.addAttribute("todos",todos);
+            todos.remove(todo);
+            todoService.updateTodo(todo);
+            String userName = (String) model.get("name");
+            todo.setOwnerName(userName);
+//            String userName = (String) model.get("name");
+//            todoService.addNewTodo(userName, todo.getDescription(), LocalDate.now().plusDays(6), false);
+            return "redirect:list-todos";
+        }
     }
 }
