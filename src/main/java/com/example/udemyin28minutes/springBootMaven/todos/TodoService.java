@@ -18,10 +18,12 @@ public class TodoService {
         todos.add(new Todo(++todoCount,"sneha","call your best friend", LocalDate.now().plusWeeks(2),false));
     }
 
-    public List<Todo> findByUserName(String username)
-    {
-        return todos;
-    }
+//    public List<Todo> findByUserName(String username)
+//    {
+//        Predicate<? super Todo> predicate=todo -> todo.getOwnerName().equals(username);
+//        return todos.stream().filter(predicate).toList();
+////        return todos;
+//    }
     public void addNewTodo(String ownerName, String description, LocalDate endDate, boolean done)
     {
         todos.add(new Todo(++todoCount,ownerName,description,endDate,done));

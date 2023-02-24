@@ -1,11 +1,16 @@
 package com.example.udemyin28minutes.springBootMaven.todos;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+@Entity
 public class Todo {
-    private int id;
+   @Id @GeneratedValue
+   private int id;
     private String ownerName;
     @Size(min = 10,message = "Enter atleast 10 characters")
     private String description;
@@ -21,6 +26,9 @@ public class Todo {
                 ", endDate=" + endDate +
                 ", done=" + done +
                 '}';
+    }
+
+    public Todo() {
     }
 
     public Todo(int id, String ownerName, String description, LocalDate endDate, boolean done) {
